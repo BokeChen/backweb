@@ -14,6 +14,7 @@ module.exports = {
     context: path.resolve(__dirname, '../'),
     entry: {
         app: './src/main.js'
+
     },
     output: {
         path: config.build.assetsRoot,
@@ -56,7 +57,7 @@ module.exports = {
                 }
             },
             {
-                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                test: /\.(woff2?(\?v=[0-9]\.[0-9]\.[0-9])?|eot|ttf|otf)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {
                     limit: 10000,
