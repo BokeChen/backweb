@@ -23,6 +23,7 @@
   </div>
 </template>
 <script>
+  import {accountLogin} from '@/service/getData'
   export default {
     data() {
       return {
@@ -31,8 +32,8 @@
           name: '',
           password: '',
           verifycode:'',
-          loginErrorTimes:1
-         
+          loginErrorTimes:1,
+          userInfo:''
         },
         rules:{
              name: [
@@ -49,17 +50,22 @@
         }
       }
     },
-    methods: {
-      submitForm(formName) {
-        this.$refs[formName].validate((valid) => {
+    methods: {      
+      async submitForm(formName) {
+        this.$refs[formName].validate((valid) => { return 
           if (valid) {
-            alert('submit!');
-            this.form.loginErrorTimes++;
-          } else {
-            console.log('error submit!!');
+            alert('submit!');              
+             return true;
+          } else {            
+             this.form.loginErrorTimes++;        
             return false;
           }
-        });
+          
+        }).bind(this);
+       
+         this.userInfo = await accountLogin(this.form.name, this.form.password);
+         console.log(this.userInfo);
+        
       }
   }
   }

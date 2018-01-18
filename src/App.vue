@@ -6,7 +6,7 @@
     <el-header class="headerNav">
         <sel-head ></sel-head>
     </el-header>
-    <el-container>
+    <el-container class="main">
         <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
              <menu-tree :list="sidebarMenuList"></menu-tree>
         </el-aside>
@@ -48,6 +48,7 @@
     background-color:white !important;
     border-right:5px solid #ddd;
   }
+  .main{min-width:1200px !important;}
 </style>
 
 <script>
